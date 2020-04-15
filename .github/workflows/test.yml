@@ -27,6 +27,8 @@ jobs:
         run: cp .env.example .env
       - name: Create app key
         run: php artisan key:generate
+      - name: Start mysql service
+        run: sudo /etc/init.d/mysql start
       - name: Run migrations
         run: php artisan migrate
       - name: Run tests
