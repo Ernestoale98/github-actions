@@ -16,7 +16,9 @@ jobs:
         run: npm run dev
       - name: Create .env
         run: cp .env.example .env
-      - name: Run test
-      run: ./vendor/bin/phpunit
-      env:
-        APP_ENV: testing
+      - name: Create app key
+        run: php artisan key:generate
+      - name: Run tests
+        run: ./vendor/bin/phpunit
+        env:
+          APP_ENV: testing
