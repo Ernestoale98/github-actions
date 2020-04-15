@@ -5,7 +5,15 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: githubactions
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - uses: actions/checkout@v1
       - name: Run composer install
@@ -19,7 +27,7 @@ jobs:
       - name: Create app key
         run: php artisan key:generate
       - name: Run migrations
-          run: php artisan migrate
+        run: php artisan migrate
       - name: Run tests
         run: ./vendor/bin/phpunit
         env:
