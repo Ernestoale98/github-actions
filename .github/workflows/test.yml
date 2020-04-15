@@ -18,3 +18,5 @@
           run: cp .env.example .env
         - name: Run test
           run: ./vendor/bin/phpunit
+          env:
+            APP_ENV: testing
