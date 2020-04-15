@@ -1,0 +1,20 @@
+  name:Actions
+
+    on:[push]
+
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+
+      step:
+        - uses: actions/checkout@v2
+        - name: Run composer install
+          run: composer install
+        - name: Run npm install
+          run: npm install
+        - name: Run npm run dev
+          run: npm run dev
+        - name: Create .env
+          run: cp .env.example .env
+        - name: Run test
+          run: ./vendor/bin/phpunit
