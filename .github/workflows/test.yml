@@ -1,22 +1,22 @@
-  name:Actions
+name: Actions
 
-  on: [push]
+on: [push]
 
-  jobs:
-    build:
-      runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-      steps:
-        - uses: actions/checkout@v1
-        - name: Run composer install
-          run: composer install
-        - name: Run npm install
-          run: npm install
-        - name: Run npm run dev
-          run: npm run dev
-        - name: Create .env
-          run: cp .env.example .env
-        - name: Run test
-        run: ./vendor/bin/phpunit
-        env:
-          APP_ENV: testing
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run composer install
+        run: composer install
+      - name: Run npm install
+        run: npm install
+      - name: Run npm run dev
+        run: npm run dev
+      - name: Create .env
+        run: cp .env.example .env
+      - name: Run test
+      run: ./vendor/bin/phpunit
+      env:
+        APP_ENV: testing
