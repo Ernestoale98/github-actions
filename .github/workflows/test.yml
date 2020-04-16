@@ -9,7 +9,7 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: false
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_ROOT_PASSWORD: password
           MYSQL_DATABASE: laravel
         ports:
@@ -29,8 +29,6 @@ jobs:
         run: php artisan key:generate
       - name: Start mysql service
         run: sudo systemctl start mysql
-      - name: Create database
-        run: mysql -uroot -proot < databases/tracker/create_databases.sql
       - name: Run migrations
         run: php artisan migrate
       - name: Run tests
