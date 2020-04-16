@@ -30,8 +30,10 @@ jobs:
         run: php artisan key:generate
       - name: Start mysql service
         run: sudo systemctl start mysql
-      - name: Create database
-        run: mysql -u root -p -e 'CREATE DATABASE IF NOT EXISTS test;'
+      - name: Remove privileges
+        run: mysqld_safe
+      - name: Create data base
+        run: mysql -u root -e 'CREATE DATABASE IF NOT EXISTS test;'
       - name: Run migrations
         run: php artisan migrate
       - name: Run tests
