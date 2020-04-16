@@ -31,7 +31,7 @@ jobs:
       - name: Start mysql service
         run: sudo systemctl start mysql
       - name: Remove privileges
-        run: mysqld_safe
+        run: sudo mysqld_safe
       - name: Create data base
         run: mysql -u root -e 'CREATE DATABASE IF NOT EXISTS laravel;'
       - name: Run migrations
