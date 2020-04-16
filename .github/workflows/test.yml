@@ -9,7 +9,7 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_USER: user
+          MYSQL_USER: root
           MYSQL_PASSWORD: password
           MYSQL_DATABASE: laravel
           MYSQL_ROOT_PASSWORD: password
