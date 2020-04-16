@@ -33,7 +33,7 @@ jobs:
       - name: Remove privileges
         run: mysqld_safe
       - name: Create data base
-        run: mysql -u root -e 'CREATE DATABASE IF NOT EXISTS test;'
+        run: mysql -u root -e 'CREATE DATABASE IF NOT EXISTS laravel;'
       - name: Run migrations
         run: php artisan migrate
       - name: Run tests
