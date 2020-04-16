@@ -28,11 +28,9 @@ jobs:
       - name: Create app key
         run: php artisan key:generate
       - name: Start mysql service
-        run: sudo /etc/init.d/mysql start
-      - name: Access Mysl
-        run: mysql -u root -p root
-      - name: Password
-        run: password
+        run: sudo systemctl start mysql
+      - name: Create database
+        run: mysql -uroot -proot < databases/tracker/laravel.sql
       - name: Run migrations
         run: php artisan migrate
       - name: Run tests
